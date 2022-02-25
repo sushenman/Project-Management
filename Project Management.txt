@@ -1,0 +1,69 @@
+Project 
+temporary in nature 
+definite start date end date 
+
+Week 6: Work in progress 20%
+Week 11: Final Presentation 20%
+Week 13: Final Portfolio 60%
+kunnai pani chutna vayena
+Project Management Triple constraints 
+Scope: (Objective)
+Time: extend 2 months, specialist:1.lakh
+Cost: Extend - 50 thousand 
+
+scope well define na vaye
+Non quality project
+
+Scope well defined 
+Timely 
+Cost with in estimation 
+Quality Project
+
+
+
+Process/ PhaSES
+
+1.Initation Phase
+	1.1 Project Charter
+		Version Control 
+		Project Justification
+		Project Scope
+		Project Assumption
+		Roles and Responsibilities 
+	1.2 Team Contract
+		
+planningg phase
+	2.1 Skill Audit
+		Team Skill Audit
+		Individual Skill Audit
+	2.2 MS-Project
+		Gantt Chart
+		Network Diagram
+		Timeline
+		Calender
+		Resource Sheet
+		Project Task (WORK BREAKDOWN STRUCTURE)
+	2.3 Communicaton Tools Used
+	
+execution phase 
+	3.1 EERD
+	3.2 ERD
+	3.3 Final Composite/ Decomposite
+	3.4 Logical Table
+	3.5 Use case diagram
+		Customer Interface
+		Trader Interface 
+		Admin Interface
+		Overall Interface
+	3.6 Requirement Catalogue MoScoW Rules
+		Functional Requirment
+		Non-Functional Requirement 
+	3.7 Logo Design 
+	3.8 WireFrame
+	3.9 Product Development
+		Homepage
+		Login Page
+		Register Page
+		Back end 
+monitoring and controlling phase
+closing phase
