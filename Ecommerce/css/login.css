@@ -1,0 +1,177 @@
+*{
+    margin: 0;
+    padding: 0;
+    
+}
+body{
+    background-image: url(../images/l.jpg);
+    background-size: cover;
+    /* background-position:bot ; */
+    background-repeat: no-repeat;
+}
+.container1
+{
+    /* display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; */
+    top: 38%;
+    left: 50%;
+    padding: 2em;
+    
+    box-sizing: border-box;
+    /* background-color: red; */
+    position: absolute;
+    transform:translate(-50%,-0%);
+    width: 320px;
+    height: 420px;
+
+    
+}
+.accountlg img
+{
+    width: 100px;
+    height: 100px;
+    /* display: block;
+   align-items: center;
+    text-align: center;
+    display: flex; */
+     /* 
+    justify-content: center; */
+    position: absolute ;
+    top: -50px;
+    border-radius: 50%;
+    left: calc(50% - 50px);
+}
+.form1{
+    min-height: 10em;
+    display: table-cell;
+    vertical-align: middle; 
+}
+.form-type
+{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 220px;
+    height: 100%;
+    padding: 6px;
+    margin: auto;
+    margin-top: 1em;
+   
+    
+}
+
+#submit{
+  margin-left: auto;
+    margin-right: auto;
+    width: auto;
+}
+.forget{
+    display: block;
+    justify-content: space-between;
+    align-items: left;
+    text-align: left;
+    /* width: 100%;
+    height: auto; */
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 11em;
+
+}
+.createacc
+{
+    display: block;
+    justify-content: center;
+    align-items: right;
+    text-align: right;
+    /* width: 5%; */
+    height: auto;
+    padding: 6px;
+    margin-top: 1em;
+
+}
+.password
+{
+    display:flex;
+    justify-content: center;
+    text-align: center;
+    align-items:center;
+}
+.area{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+      max-width: 450px;
+     width: 100%;
+     padding: 25px;
+     border-radius: 5px;
+     box-shadow: 4px 4px 4px;
+     transform: translate(-50%,-50%);
+  
+  }
+  .area h2{
+    text-align: center;
+    background: #00ff00;
+    color: #000;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    top: -20px;
+    width: 100%;
+    padding: 7px;
+  
+  }
+  .area .input-field
+  {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  .input-field input[type="text"],textarea,[type="email"],[type="password"] {
+    
+   /* background: rgba(0, 17, 252, 0.5); */
+    width: 100%;
+    border: 1px solid;
+    padding: 10px;
+    color: rgb(161, 23, 60);
+    text-align: center;
+    border-radius: 20px;
+  
+  }
+    .input-field input[type="text"]:focus,textarea:focus,[type="email"]:focus,[type="password"]:focus {
+        border: 2px solid #00ff00;
+        
+        outline: none;
+    }
+
+  .area textarea
+  {
+    height: 80px;
+    resize: none;
+    color: #fff;
+  
+  }
+  .area .btn input[type="submit"]
+  {
+    border: 0;
+    margin-top: 15px;
+    padding: 10px;
+    width: 100%;
+    background: #fece0c;
+    color: #332902;
+    font-weight: bold;
+    letter-spacing: 2px;
+    cursor: pointer;
+  }
+  #errormsg
+  {
+
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 0px;
+    background: red;
+    text-align: center;
+    transition: all 1s ease;
+  }
