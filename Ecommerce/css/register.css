@@ -6,11 +6,22 @@
     box-sizing: border-box;
     
 }
+
+#errormsg
+{
+
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 0px;
+  background: red;
+  text-align: center;
+  transition: all 1s ease;
+}
 .accountlg 
 {
     width:200px;
     height: 200px;
-   
+  
     border-radius: 50%;
     
 
@@ -20,6 +31,7 @@
     width:200px;
     height: 200px;
     border-radius: 50%;
+    
 }
 #file
 {
@@ -45,8 +57,8 @@
     justify-content: center;
     align-items:center;
     text-align: center;
-    height: 100vh;
-    position: relative;
+  margin-top: 2em;
+   
     /* background-color: orange; */
 }
 .form-type
