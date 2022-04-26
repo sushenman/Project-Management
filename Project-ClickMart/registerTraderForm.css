@@ -1,0 +1,144 @@
+*
+{
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+    
+}
+
+#errormsg
+{
+
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 0px;
+  background: red;
+  text-align: center;
+  transition: all 1s ease;
+}
+.accountlg 
+{
+    width:200px;
+    height: 200px;
+  
+    border-radius: 50%;
+    
+
+   
+}
+.accountlg img{
+    width:200px;
+    height: 200px;
+    border-radius: 50%;
+    
+}
+#file
+{
+    display: none;
+}
+#upload
+{
+    height: 40px;
+    width: 100px;
+    position:relative;
+    top: -56px;
+    left: 25%;
+    color: white;
+    cursor: pointer;
+    display: none;
+    
+    border-radius: 5px;
+}
+.regi
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+    text-align: center;
+  margin-top: 2em;
+   
+    /* background-color: orange; */
+}
+.form-type
+{
+    position:relative;
+    display:flex;
+    margin-bottom:2em;
+    margin-top:2em;
+    height: 30px;
+    width: 370px;
+    text-align: center;
+    
+}
+.form-type:focus{
+outline: none;
+}
+.submit-btn
+{
+    position:relative;
+    display:block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom:2em;
+    margin-top:2em;
+    height: 30px;
+    /* width: 170px; */
+    text-align: center;
+    background-color: transparent;
+    border: none;
+    border-radius: 15px;
+    color: blue;
+    font-size: 1.2em;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+.submit-btn:hover{
+    background-color: transparent;
+    color: black;
+}
+.newacc
+{
+    padding-top: 19px;
+    font-size: 30px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.trade
+{
+    text-align: left;
+ 
+   
+}
+.trader
+{
+    text-align: center;
+    width: 10%;
+}
+
+                                                /* TRADER REGISTRATION  */
+.regi-form1
+{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 15px;
+    width: 100%;
+    
+}
+.form-type1
+{
+    
+   align-items: center;
+  
+    margin-top:2em;
+    height: 30px;
+    width: 370px;
+    text-align: center;
+}
+.form-grp
+{
+  padding-right: 2em;
+}
