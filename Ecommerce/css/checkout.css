@@ -1,0 +1,15 @@
+*{
+    margin:0;
+    padding:0;
+}
+.heading
+{
+    display: flex;
+    justify-content: space-around;
+}
+/* .checkout-items{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 20px;
+} */
