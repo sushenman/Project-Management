@@ -1,0 +1,16 @@
+.search-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-banner{
+    padding: 10px;
+    height: 20vh;
+    width: 100%;
+    background-color: #DE3163;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

@@ -1,0 +1,25 @@
+
+.selectShop-container{
+    margin: auto;
+    width: 50%;
+    border: 2px solid black;
+    padding: 20px;
+}
+.inputElement {
+    display: flex;
+    flex-direction: column;
+    margin:10px;
+}
+
+.inputElement input {
+    height: 30px;
+}
+
+.inputElement label {
+    margin-bottom: 10px;
+}
+
+.btn {
+    width: 100px;
+    height: 40px;
+}

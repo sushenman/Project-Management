@@ -1,0 +1,32 @@
+
+.shop-container {
+    margin: auto;
+    width: 80%;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.shop-container h1 {
+    margin-top:50px;
+}
+
+.shops {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;  
+    margin: 50px;
+}
+
+.content {
+    border: 5px solid black; 
+    border-radius: 10px;
+    width: 500px;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+}

@@ -1,0 +1,52 @@
+.content-wrapper {
+    width: 80%;
+    margin: auto;
+    border: 3px solid black;
+    padding: 10px;
+}
+.main-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid green;
+    height: 55vh;
+}
+.image-container {
+    flex:3;
+    height: 100%;
+}
+.image {
+    width: 400px;
+    border: 1px solid red;
+}
+
+.image img {
+    width: 100%;
+}
+
+.details{
+    /* border: 1px solid red; */
+    flex: 1;
+    padding: 20px;
+    height: 100%;
+}
+.form h1 {
+    margin-bottom: 10px;
+}
+.input-group {
+    display: flex;
+    flex-direction: column;
+}
+.input-group label {
+    margin-bottom: 10px;
+}
+.input-group input {
+    width: 50%;
+    margin-bottom: 10px;
+}
+
+.comments {
+    margin-bottom: 10px;
+    padding: 5px;
+}
