@@ -3,6 +3,7 @@
     padding:0;
     box-sizing: border-box;
 }
+
 .path-banner {
     padding: 10px;
     height: 20vh;
@@ -12,6 +13,7 @@
     justify-content: center;
     align-items: center;
 }
+
 .select {
     margin: 10px;
     padding: 10px;
@@ -19,6 +21,7 @@
     justify-content: flex-end;
     align-items: center;
 }
+
 .main-content {
     display: flex;
     flex-direction: column;
@@ -61,6 +64,24 @@
     display:grid;
     grid-template-columns: repeat(4,1fr);
     grid-gap:5px;    
+}
+
+.quantity {
+    /* background-color: rebeccapurple; */
+    width: 40%;
+    margin:auto;
+    display: none;
+}
+.card:hover .quantity {
+    display: block;
+    justify-content: center;
+    /* text-align: center; */
+}
+
+.error {
+    background-color: red;
+    color: white;
+    text-align: center;
 }
 
 /* Responsive Design */

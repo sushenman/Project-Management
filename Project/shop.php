@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shop</title>
-    <link rel="stylesheet" href="style/main.css">
+    <link rel="stylesheet" href="style/index1.css">
     <link rel="stylesheet" href="style/shop.css">
     <script src="https://kit.fontawesome.com/b99e675b6e.js"></script> 
 </head>
@@ -148,7 +148,7 @@
                     </div>
                     <div class="cat-input">
                         <input type="radio" name="category" value="deli" id="deli">
-                        <label for="fish">Delisacence</label>
+                        <label for="deli">Delisacence</label>
                     </div>
                     <div class="enter">
                         <input type="submit" value="Select" name="submit-radio">
@@ -163,12 +163,13 @@
                         // Display values for category
                         if(isset($_POST['submit-radio'])){
                             $val = $_POST['category'];
+                            echo $val;
                             if($val == 'meat'){
                                 include('connection.php');
                                 $selectProduct = 
                                     "SELECT p.product_id,p.image_name,p.product_name, p.price, c.category_type
                                         FROM PRODUCT p, CATEGORY c
-                                        WHERE p.fk1_category_id = c.category_id
+                                        WHERE p.fk2_category_id = c.category_id
                                         AND c.category_type = 'meat'
                                     ";
                                 $selectShop = oci_parse($conn,$selectProduct);
@@ -178,23 +179,34 @@
                                     $productName = $row['PRODUCT_NAME'];
                                     $proId = $row['PRODUCT_ID'];
                                     $price = $row['PRICE'];
+
+                                    // select offer
+                                    $offerVal = 0;
+                                    $selectOffer = "SELECT *FROM OFFER WHERE FK1_PRODUCT_ID = $proId";
+                                    $parseOffer = oci_parse($conn,$selectOffer);
+                                    oci_execute($parseOffer);
+                                    if (($row = oci_fetch_array($parseOffer, OCI_BOTH)) != false) {
+                                        $offerVal =  $row['OFFER_AMOUNT'];
+                                    }
                                     echo "<form action='cart.php?action=add&id=${proId}' method='POST'>";
                                         echo '<div class="card">';
                                             echo "<a href='viewProduct.php?id=${proId}'>";
                                                 echo "<img src='./images/${imgName}' alt='img'>";                              
                                             echo "</a>";
+                                            echo "<h3 class='offer'>$$offerVal Off</h3>";
                                             echo "<h3>${productName}</h3>";
-                                            echo "<h3>${price}</h3>";
+                                            echo "<h3>$${price}</h3>";
+                                            echo "<input type='number' name='quantity' placeholder='Add Quantity' class='quantity' value='1'>";
                                             echo "<input type='submit' value='Add To Cart' class='btn-addCart' name='submit'>";
                                         echo '</div>';
                                     echo '</form>';
                                 }                                 
-                            }else if($val = 'grocery'){
+                            }else if($val == 'grocery'){
                                 include('connection.php');
                                 $selectProduct = 
                                     "SELECT p.product_id,p.image_name,p.product_name, p.price, c.category_type
                                         FROM PRODUCT p, CATEGORY c
-                                        WHERE p.fk1_category_id = c.category_id
+                                        WHERE p.fk2_category_id = c.category_id
                                         AND c.category_type = 'grocery'
                                     ";
                                 $selectShop = oci_parse($conn,$selectProduct);
@@ -204,24 +216,37 @@
                                     $productName = $row['PRODUCT_NAME'];
                                     $proId = $row['PRODUCT_ID'];
                                     $price = $row['PRICE'];
+
+                                    // select offer
+                                    $offerVal = 0;
+                                    $selectOffer = "SELECT *FROM OFFER WHERE FK1_PRODUCT_ID = $proId";
+                                    $parseOffer = oci_parse($conn,$selectOffer);
+                                    oci_execute($parseOffer);
+                                    if (($row = oci_fetch_array($parseOffer, OCI_BOTH)) != false) {
+                                        $offerVal =  $row['OFFER_AMOUNT'];
+                                    }
                                     echo "<form action='cart.php?action=add&id=${proId}' method='POST'>";
                                         echo '<div class="card">';
                                             echo "<a href='viewProduct.php?id=${proId}'>";
                                                 echo "<img src='./images/${imgName}' alt='img'>";                              
                                             echo "</a>";
+                                            echo "<h3 class='offer'>$$offerVal Off</h3>";
                                             echo "<h3>${productName}</h3>";
-                                            echo "<h3>${price}</h3>";
+                                            echo "<h3>$${price}</h3>";
+                                            echo "<input type='number' name='quantity' placeholder='Add Quantity' class='quantity' value='1'>";
+                                            // echo "<input type='' value='${}' class='btn-addCart' name='submit'>";
+                                            echo "<input type='submit' value='Add To Cart' class='btn-addCart' name='submit'>";
                                             echo "<input type='submit' value='Add To Cart' class='btn-addCart' name='submit'>";
                                         echo '</div>';
                                     echo '</form>';
                                 }                                                                 
-                            }else if($val = 'deli'){
+                            }else if($val == 'deli'){
                                 include('connection.php');
                                 $selectProduct = 
                                     "SELECT p.product_id,p.image_name,p.product_name, p.price, c.category_type
                                         FROM PRODUCT p, CATEGORY c
-                                        WHERE p.fk1_category_id = c.category_id
-                                        AND c.category_type = 'delicascence'
+                                        WHERE p.fk2_category_id = c.category_id
+                                        AND c.category_type = 'deliscancence'
                                     ";
                                 $selectShop = oci_parse($conn,$selectProduct);
                                 oci_execute($selectShop);                 
@@ -230,23 +255,33 @@
                                     $productName = $row['PRODUCT_NAME'];
                                     $proId = $row['PRODUCT_ID'];
                                     $price = $row['PRICE'];
+                                    // select offer
+                                    $offerVal = 0;
+                                    $selectOffer = "SELECT *FROM OFFER WHERE FK1_PRODUCT_ID = $proId";
+                                    $parseOffer = oci_parse($conn,$selectOffer);
+                                    oci_execute($parseOffer);
+                                    if (($row = oci_fetch_array($parseOffer, OCI_BOTH)) != false) {
+                                        $offerVal =  $row['OFFER_AMOUNT'];
+                                    }
                                     echo "<form action='cart.php?action=add&id=${proId}' method='POST'>";
                                         echo '<div class="card">';
                                             echo "<a href='viewProduct.php?id=${proId}'>";
                                                 echo "<img src='./images/${imgName}' alt='img'>";                              
                                             echo "</a>";
+                                            echo "<h3 class='offer'>$$offerVal Off</h3>";
                                             echo "<h3>${productName}</h3>";
-                                            echo "<h3>${price}</h3>";
+                                            echo "<h3>$${price}</h3>";
+                                            echo "<input type='number' name='quantity' placeholder='Add Quantity' class='quantity' value='1'>";
                                             echo "<input type='submit' value='Add To Cart' class='btn-addCart' name='submit'>";
                                         echo '</div>';
                                     echo '</form>';                               
                                 }
-                            }else {
+                            }else if($val == 'fish'){
                                 include('connection.php');
                                 $selectProduct = 
                                     "SELECT p.product_id,p.image_name,p.product_name, p.price, c.category_type
                                         FROM PRODUCT p, CATEGORY c
-                                        WHERE p.fk1_category_id = c.category_id
+                                        WHERE p.fk2_category_id = c.category_id
                                         AND c.category_type = 'fish'
                                     ";
                                 $selectShop = oci_parse($conn,$selectProduct);
@@ -256,17 +291,30 @@
                                     $productName = $row['PRODUCT_NAME'];
                                     $proId = $row['PRODUCT_ID'];
                                     $price = $row['PRICE'];
+
+                                    // select offer
+                                    $offerVal = 0;
+                                    $selectOffer = "SELECT *FROM OFFER WHERE FK1_PRODUCT_ID = $proId";
+                                    $parseOffer = oci_parse($conn,$selectOffer);
+                                    oci_execute($parseOffer);
+                                    if (($row = oci_fetch_array($parseOffer, OCI_BOTH)) != false) {
+                                        $offerVal =  $row['OFFER_AMOUNT'];
+                                    }
                                     echo "<form action='cart.php?action=add&id=${proId}' method='POST'>";
                                         echo '<div class="card">';
                                             echo "<a href='viewProduct.php?id=${proId}'>";
                                                 echo "<img src='./images/${imgName}' alt='img'>";                              
                                             echo "</a>";
+                                            echo "<h3 class='offer'>$$offerVal Off</h3>";
                                             echo "<h3>${productName}</h3>";
-                                            echo "<h3>${price}</h3>";
+                                            echo "<h3>$${price}</h3>";
+                                            echo "<input type='number' name='quantity' placeholder='Add Quantity' class='quantity' value='1'>";
                                             echo "<input type='submit' value='Add To Cart' class='btn-addCart' name='submit'>";
                                         echo '</div>';
                                     echo '</form>';                               
                                 }                                
+                            }else {
+                                echo 'Product Not Found';
                             }
                         }else if(isset($_POST['submit-select'])){ // display value while sorting
                             $value = $_POST['select'];
@@ -280,13 +328,24 @@
                                     $productName = $row['PRODUCT_NAME'];
                                     $proId = $row['PRODUCT_ID'];
                                     $price = $row['PRICE'];
+
+                                    // select offer
+                                    $offerVal = 0;
+                                    $selectOffer = "SELECT *FROM OFFER WHERE FK1_PRODUCT_ID = $proId";
+                                    $parseOffer = oci_parse($conn,$selectOffer);
+                                    oci_execute($parseOffer);
+                                    if (($row = oci_fetch_array($parseOffer, OCI_BOTH)) != false) {
+                                        $offerVal =  $row['OFFER_AMOUNT'];
+                                    }
                                     echo "<form action='cart.php?action=add&id=${proId}' method='POST'>";
                                         echo '<div class="card">';
                                             echo "<a href='viewProduct.php?id=${proId}'>";
                                                 echo "<img src='./images/${imgName}' alt='img'>";                              
                                             echo "</a>";
+                                            echo "<h3 class='offer'>$$offerVal Off</h3>";
                                             echo "<h3>${productName}</h3>";
-                                            echo "<h3>${price}</h3>";
+                                            echo "<h3>$${price}</h3>";
+                                            echo "<input type='number' name='quantity' placeholder='Add Quantity' class='quantity' value='1'>";
                                             echo "<input type='submit' value='Add To Cart' class='btn-addCart' name='submit'>";
                                         echo '</div>';
                                     echo '</form>';
@@ -301,13 +360,24 @@
                                     $productName = $row['PRODUCT_NAME'];
                                     $proId = $row['PRODUCT_ID'];
                                     $price = $row['PRICE'];
+                                    
+                                    // select offer
+                                    $offerVal = 0;
+                                    $selectOffer = "SELECT *FROM OFFER WHERE FK1_PRODUCT_ID = $proId";
+                                    $parseOffer = oci_parse($conn,$selectOffer);
+                                    oci_execute($parseOffer);
+                                    if (($row = oci_fetch_array($parseOffer, OCI_BOTH)) != false) {
+                                        $offerVal =  $row['OFFER_AMOUNT'];
+                                    }
                                     echo "<form action='cart.php?action=add&id=${proId}' method='POST'>";
                                         echo '<div class="card">';
                                             echo "<a href='viewProduct.php?id=${proId}'>";
                                                 echo "<img src='./images/${imgName}' alt='img'>";                              
                                             echo "</a>";
+                                            echo "<h3 class='offer'>$$offerVal Off</h3>";
                                             echo "<h3>${productName}</h3>";
-                                            echo "<h3>${price}</h3>";
+                                            echo "<h3>$${price}</h3>";
+                                            echo "<input type='number' name='quantity' placeholder='Add Quantity' class='quantity' value='1'>";
                                             echo "<input type='submit' value='Add To Cart' class='btn-addCart' name='submit'>";
                                         echo '</div>';
                                     echo '</form>';
@@ -317,21 +387,53 @@
 
                         }else{      // display while going to shop page
                             include('connection.php');
+                            // select product
                             $selectProduct = "SELECT *FROM PRODUCT";
                             $selectShop = oci_parse($conn,$selectProduct);
-                            oci_execute($selectShop);                 
+                            oci_execute($selectShop);
+                            
+
                             while (($row = oci_fetch_array($selectShop, OCI_BOTH)) != false) {
                                 $imgName = $row['IMAGE_NAME'];
                                 $productName = $row['PRODUCT_NAME'];
                                 $proId = $row['PRODUCT_ID'];
                                 $price = $row['PRICE'];
+                                
+                                // select offer
+                                $offerVal = 0;
+                                $selectOffer = "SELECT *FROM OFFER WHERE FK1_PRODUCT_ID = $proId";
+                                $parseOffer = oci_parse($conn,$selectOffer);
+                                oci_execute($parseOffer);
+                                if (($row = oci_fetch_array($parseOffer, OCI_BOTH)) != false) {
+                                    $offerVal =  $row['OFFER_AMOUNT'];
+                                }
+
+                                // if(isset($_SESSION['error-msg'])){
+                                //     echo "<div class='message-error'>";
+                                //         echo $_SESSION['error-msg'];
+                                //     echo "</div>";
+                                // }
+                               
                                 echo "<form action='cart.php?action=add&id=${proId}' method='POST'>";
+                                    if(isset($_SESSION['pId'])){           
+                                        if($proId == $_SESSION['pId']){
+                                            echo "<div class='error'>";
+                                                echo $_SESSION['error-msg'];
+                                            echo "</div>";
+                                            // unset($_SESSION['error-msg']);
+                                            
+                                        }
+                                    }
                                     echo '<div class="card">';
                                         echo "<a href='viewProduct.php?id=${proId}'>";
                                             echo "<img src='./images/${imgName}' alt='img'>";                              
                                         echo "</a>";
+                                        echo "<h3 class='offer'>$$offerVal Off</h3>";
                                         echo "<h3>${productName}</h3>";
-                                        echo "<h3>${price}</h3>";
+                                        echo "<h3>$${price}</h3>";
+                                        echo "<input type='number' name='quantity' placeholder='Add Quantity' class='quantity' value='1'>";
+                                        // echo "<input type='text' value='${productName}' name='productName'>";
+                                        // echo "<input type='text' value='${price}' name='price'>";
                                         echo "<input type='submit' value='Add To Cart' class='btn-addCart' name='submit'>";
                                     echo '</div>';
                                 echo '</form>';
@@ -346,50 +448,62 @@
 
         <!-- FOOTER -->    
         <div class="footer">
-            <div class="about">
-                <h3>About Us</h3>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Excepturi atque sequi perspiciatis laborum perferendis reiciendis architecto ratione quas magni, et officia. Exercitationem ducimus libero mollitia voluptate ea perspiciatis voluptatibus temporibus.
-                </p>
-            </div> 
-        
-            <!-- CONTACT DETAIL -->   
-            <div class="contact-detail">
-                <h3>Contact Info</h3>
-                <div class="location">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <p>CleckHudderFax, UK</p>
+                <div class="about">
+                    <div class="aboutus">
+                        <h3>About Us</h3>
+                    </div>
+                    <div class="aboutbody">
+                         <p> We are online e-commerce 
+                    Website located at Cleckhudderfax which allows costumer to directly buy goods or services from a seller over the Internet using a web browser or 
+                    a mobile app.</p>
+                    </div>
+                    
+                  
                 </div>
-                <div class="location">
-                    <i class="fas fa-phone"></i>
-                    <p>+44 908765548</p>
+
+                <!-- CONTACT DETAIL -->
+                <div class="contact-detail">
+                    <h3>Contact Info</h3>
+                    <div class="location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <p>CleckHudderFax, UK</p>
+                    </div>
+                    <div class="location">
+                        <i class="fas fa-phone"></i>
+                        <p>+44 908765548</p>
+                    </div>
+                    <div class="media">
+                        <span class="social">
+                            <a href="#" class="fab fa-facebook"></a>
+                        </span>
+                        <span class="social">
+                            <a href="#" class="fab fa-twitter"></a>
+                        </span>
+                        <span class="social">
+                            <a href="#" class="fab fa-instagram"></a>
+                        </span>
+                    </div>
                 </div>
-                <div class="media">
-                    <span class="social">
-                        <a href="#" class="fab fa-facebook"></a>                       
-                    </span>
-                    <span class="social">
-                        <a href="#" class="fab fa-twitter"></a>                       
-                    </span>
-                    <span class="social">
-                        <a href="#" class="fab fa-instagram"></a>                       
-                    </span>
+                <div class="link">
+                    <div class="linkhead">
+                         <h3>Quick links</h3>
+                    </div>
+                     <div class="linkclick">
+                       <ul>
+                        <li><a href="index.php">Home</a></li>
+                        <li><a href="shop.php">Shop</a></li>
+                        <li><a href="customerloginform.php">Login</a></li>
+                    </ul>   
+                     </div>
+                   
                 </div>
-            </div>    
-            <div class="link">
-                <h3>Quick links</h3>
-                <ul>
-                    <li><a href="home">Home</a></li>
-                    <li><a href="home">Shop</a></li>
-                    <li><a href="home">Login</a></li>
-                </ul>
-            </div>
-        </div>         
+            </div>        
          <!-- COPY RIGHT -->
         <div class="copy">
             <p>All Rights Reserved</p>
         </div>
     </div>
-    <!-- <script src="javascript/slidescript.js"></script> -->
     <script src="javascript/overlay.js"></script>  
+    <script src="javascript/offer.js"></script>
 </body>
 </html>

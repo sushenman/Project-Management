@@ -2,18 +2,16 @@
     include('connection.php');
     session_start();
     // echo $_SESSION['pan'];
+    echo "som";
     $selectProdId = oci_parse($conn,'SELECT *FROM PRODUCT');
     $id = '';
     oci_execute($selectProdId);
 
     while (($row = oci_fetch_array($selectProdId, OCI_BOTH)) != false) {
-    // Use the uppercase column names for the associative array indices
         $id = $row['PRODUCT_ID'];
-        echo $id;
-   // echo  $row['DNAME']. "\t";
-   // echo  $row['LOC']. "<br>";
+
     }
-    echo $id;
+    // echo $id;
     oci_commit($conn);
     oci_free_statement($selectProdId);
     oci_close($conn);

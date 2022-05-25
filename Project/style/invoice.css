@@ -1,0 +1,71 @@
+/* *{
+    margin: 0;
+    padding: 0;
+} */
+.invoice-container
+{
+    display: block;
+    text-align: center;
+    align-items: center;
+    margin: auto ;
+    width: 80%;
+    padding: 1em;
+ /* line-height: 0px;   */
+position: relative;
+top: 140px;
+ background-color:rgb(236,228,217) ;
+}
+.invoice{   
+    /* padding-left: 20px;
+    padding-top: 20px; */
+
+}
+.invoice-head
+{   
+
+    width: 15vw;
+    display: flex;
+    justify-content: space-between;
+}
+.invoice-date
+{
+
+    display: flex;
+    justify-content: space-between;
+}
+.billedto
+{
+  
+    display: flex;
+    justify-content: space-between;
+}
+.invoice-table{
+    line-height: 40px;
+     width: 100%;
+
+    
+}
+.tablehead
+{
+    
+}
+
+td{
+  
+    
+    text-align: center;
+    /* border: 1px solid red; */
+}
+.total-end, .proceed
+{
+    display: flex;
+    justify-content: flex-end;
+    text-align: right;
+    align-items: right;
+    word-spacing: 1cm;
+   
+    width: 54.5vw;
+    margin: auto;
+    line-height: 35px;
+
+}

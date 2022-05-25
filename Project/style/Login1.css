@@ -77,20 +77,15 @@ margin-left: auto;
 {
   display: block;
   justify-content: center;
-  align-items: center;
-  text-align: center;
+  align-items: right;
+  text-align: right;
   /* width: 5%; */
   height: auto;
   padding: 6px;
   margin-top: 1em;
 
 }
-.createacc a{
-  color: rgb(247, 247, 247);
-  text-decoration: none;
-  
-}
-.passwords
+.password
 {
   display:flex;
   justify-content: center;

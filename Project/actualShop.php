@@ -2,10 +2,14 @@
     include('connection.php');
     session_start();
     $pannNo = $_SESSION['pan'];
+    // echo $pannNo;
     // echo $_SESSION['pan'];
     $selectQry = "SELECT *FROM SHOP WHERE FK1_TRADER_PAN_NO = $pannNo";
     $selectShop = oci_parse($conn,$selectQry);
     oci_execute($selectShop);
+    // while (($row = oci_fetch_array($selectShop, OCI_BOTH)) != false) {
+    //     // echo $row['']
+    // }                      
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,7 +22,7 @@
 </head>
 <body>
     <div class="shop-container">
-        <h1>Select Shop</h1>
+        <h1>Your Shop</h1>
         <div class="shops">
             <?php               
                 while (($row = oci_fetch_array($selectShop, OCI_BOTH)) != false) {

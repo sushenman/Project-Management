@@ -1,0 +1,94 @@
+.content-wrapper {
+    width: 80%;
+    margin: auto;
+    border: 3px solid black;
+    padding: 10px;
+}
+.main-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid green;
+    height: 55vh;
+}
+.image-container {
+    flex:3;
+    height: 100%;
+}
+.image {
+    width: 400px;
+    border: 1px solid red;
+}
+
+.image img {
+    width: 100%;
+}
+
+.details{
+    /* border: 1px solid red; */
+    flex: 1;
+    padding: 20px;
+    height: 100%;
+}
+.form h1 {
+    margin-bottom: 10px;
+}
+.input-group {
+    display: flex;
+    flex-direction: column;
+}
+.input-group label {
+    margin-bottom: 10px;
+}
+.input-group input {
+    width: 50%;
+    margin-bottom: 10px;
+}
+
+.comments {
+    margin-bottom: 10px;
+    padding: 5px;
+}
+
+.review {
+    border: 1px solid black;
+    margin:10px;
+    padding:10px;
+}
+
+.cmnts {
+    border: 1px dotted black;
+    padding: 10px;
+    font-style: italic;
+    color: orange;
+    margin-bottom: 10px;
+}
+.quantity {
+    width: 50px;
+}
+
+/* .cart-action {
+    border: 2px solid red;
+} */
+
+.shop-btn {
+    text-decoration: none;
+    border: 1px solid black;
+    padding: 10px;
+    width: 100px;
+    text-align: center;
+    /* margin: 10px; */
+}
+
+.shop-btn a{
+    text-decoration: none;
+    text-align: center;
+    align-items: center;
+    
+}
+
+.stock {
+    /* background-color: red; */
+    color: orange;
+}

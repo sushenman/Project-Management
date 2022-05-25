@@ -1,19 +1,38 @@
 <?php 
     session_start();
     $productId =  $_GET['id'];
-    echo $productId;
+    // echo $productId;
+    $_SESSION['productsId'] = $productId;
+    $proId =  $_SESSION['productsId'];
     include('connection.php');
     $imgName = '';
     $productDesc = '';
     $price = '';
-    $selectProduct = "SELECT *FROM PRODUCT WHERE PRODUCT_ID = $productId";
+    $proName = '';
+    $qty = '';
+
+    $selectProduct = "SELECT *FROM PRODUCT WHERE PRODUCT_ID = $proId";
     $executeProd = oci_parse($conn,$selectProduct);
     oci_execute($executeProd);                 
     while (($row = oci_fetch_array($executeProd, OCI_BOTH)) != false) {
         $imgName = $row['IMAGE_NAME'];
         $productDesc = $row['PRODUCT_DESCRIPTION'];
-        $price = $row['PRICE'];              
+        $price = $row['PRICE'];  
+        $proName = $row['PRODUCT_NAME'];  
+        $qty = $row['QUANTITY'];      
     }
+
+    // select from review
+    $rating = 0;
+    $selectReview = "SELECT AVG(RATING) FROM REVIEW WHERE FK3_PRODUCT_ID = $proId";
+    $executeReview = oci_parse($conn,$selectReview);
+    oci_execute($executeReview);                 
+    if (($row = oci_fetch_array($executeReview, OCI_BOTH)) != false) {
+        $rating = $row['AVG(RATING)'];
+        // echo $rating;
+    }
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,7 +42,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>View Product</title>
     <link rel="stylesheet" href="style/index.css">
-    <link rel="stylesheet" href="style/viewproduct.css">
+    <link rel="stylesheet" href="style/viewprod1.css">
     <script src="https://kit.fontawesome.com/b99e675b6e.js"></script> 
 </head>
 <body>
@@ -127,6 +146,7 @@
                 <div class="line-3"></div>
             </div>
         </div>
+
         <!-- Content -->
         <div class="content-wrapper">
             <div class="main-content">
@@ -138,7 +158,14 @@
                 <div class="details">              
                     <div class="form">
                         <h1><?php echo $productDesc?></h1>
-                        <form action="#" method="POST">
+                        <h1><?php echo $proName?></h1>
+                        <h1 class="stock"><?php
+                            if($qty == 0){
+                                echo "Out Of Stock";
+                            }
+                        
+                        ?></h1>
+                        <form action="review.php" method="POST">
                             <div class="input-group">
                                 <label for="review">Rating</label>
                                 <input type="text" placeholder="1/5" name="review">
@@ -149,15 +176,36 @@
                             </div>
                             <input type="submit" value="Comment" name="submit-cmnt" class="comments">
                         </form>
-                    </div>                   
-                    <div class="cart-action">
-                        <button>Add To Cart</button>
+                        <h1 class="stock">
+                            <?php
+                                if($rating > 0){
+                                    echo $rating;
+                                }
+                            ?>
+                        </h1>
+                    </div>  
+                    <!-- Buy -->
+                    <div class="shop-btn">
+                        <a href="shop.php">Shop</a>
+
                     </div>
                 </div>
             </div>
+            <!-- Review On Products -->
             <div class="review">
                 <?php 
                     include('connection.php');
+                    
+                    $selectReview = "SELECT DESCRIPTION FROM REVIEW WHERE FK3_PRODUCT_ID = $productId ";
+                    $parseReview = oci_parse($conn,$selectReview);
+                    oci_execute($parseReview);    
+                    while (($row = oci_fetch_array($parseReview, OCI_BOTH)) != false) {                           
+                        $cmnt = $row['DESCRIPTION'];
+                        echo "<div class='cmnts'>";
+                            echo $cmnt;
+                        echo '</div>';
+                        // echo $cmnt;
+                    }
                                  
                 ?>
             </div>

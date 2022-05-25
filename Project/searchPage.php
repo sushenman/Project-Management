@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-    <link rel="stylesheet" href="style/index.css">
+    <link rel="stylesheet" href="style/index1.css">
     <link rel="stylesheet" href="style/searchpage.css">
     <script src="https://kit.fontawesome.com/b99e675b6e.js"></script> 
 </head>
@@ -135,28 +135,47 @@
                             }else {                               
                                 include('connection.php');
                                 $selectProd = "SELECT *FROM PRODUCT WHERE LOWER(PRODUCT_NAME) LIKE '%${lowerCase}%'";
-                                if($selectProd){
-                                    $errorMsg = 'match-found';
-                                    echo $errorMsg;
-                                    $selectItem = oci_parse($conn,$selectProd);
-                                    oci_execute($selectItem);                  
-                                    while (($row = oci_fetch_array($selectItem, OCI_BOTH)) != false) {                            
-                                        $imgName = $row['IMAGE_NAME'];
-                                        $productName = $row['PRODUCT_NAME'];
-                                        $proId = $row['PRODUCT_ID'];
-                                        $price = $row['PRICE'];
-                                        echo "<form action='cart.php?action=add&id=${proId}' method='POST'>";
-                                            echo '<div class="card">';
-                                                echo "<img src='./images/${imgName}' alt='img'>";
-                                                echo "<h3>${productName}</h3>";
-                                                echo "<h3>${price}</h3>";
-                                                echo "<input type='submit' value='Add To Cart' class='btn-addCart' name='submit'>";
-                                            echo '</div>';
-                                        echo '</form>';
+                                $imgName = '';
+                                $productName = '';
+                                $proId = 0;
+                                $price = 0;
+
+                                $count = 0;
+                                $offerVal = 0;
+                                $selectItem = oci_parse($conn,$selectProd);
+                                oci_execute($selectItem);                  
+                                while (($row = oci_fetch_array($selectItem, OCI_BOTH)) != false) {                            
+                                    $count++;
+                                    $imgName = $row['IMAGE_NAME'];
+                                    $productName = $row['PRODUCT_NAME'];
+                                    $proId = $row['PRODUCT_ID'];
+                                    $price = $row['PRICE'];
+
+                                    // select offer
+
+                                    $selectOffer = "SELECT *FROM OFFER WHERE FK1_PRODUCT_ID = $proId";
+                                    $parseOffer = oci_parse($conn,$selectOffer);
+                                    oci_execute($parseOffer);
+                                    if (($row = oci_fetch_array($parseOffer, OCI_BOTH)) != false) {
+                                        $offerVal =  $row['OFFER_AMOUNT'];
                                     }
+
+                                }
+                                if($count == 1){
+                                    echo 'match found';
+                                    echo "<form action='cart.php?action=add&id=${proId}' method='POST'>";
+                                        echo '<div class="card">';
+                                            echo "<img src='./images/${imgName}' alt='img'>";
+                                            echo "<h3 class='offer'>$$offerVal Off</h3>";
+                                            echo "<h3>${productName}</h3>";
+                                            echo "<h3>$${price}</h3>";
+                                            echo "<input type='number' name='quantity' placeholder='Add Quantity' class='quantity' value='1'>";
+                                            echo "<input type='submit' value='Add To Cart' class='btn-addCart' name='submit'>";
+                                        echo '</div>';
+                                    echo '</form>';
                                 }else {
-                                    $errorMsg = 'no-match-found';
-                                    echo $errorMsg;
+                                    echo 'no-match found';
+                                    echo  '<div class= "no_match"> </div>'; 
                                 }
                             }
                         }
@@ -166,49 +185,64 @@
             </div>
 
         </div>
-        <!-- FOOTER -->    
+        <!-- FOOTER -->  
+        <div class="foot">
         <div class="footer">
-            <div class="about">
-                <h3>About Us</h3>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Excepturi atque sequi perspiciatis laborum perferendis reiciendis architecto ratione quas magni, et officia. Exercitationem ducimus libero mollitia voluptate ea perspiciatis voluptatibus temporibus.
-                </p>
-            </div>         
-            <!-- CONTACT DETAIL -->   
-            <div class="contact-detail">
-                <h3>Contact Info</h3>
-                <div class="location">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <p>CleckHudderFax, UK</p>
+                <div class="about">
+                    <div class="aboutus">
+                        <h3>About Us</h3>
+                    </div>
+                    <div class="aboutbody">
+                         <p> We are online e-commerce 
+                    Website located at Cleckhudderfax which allows costumer to directly buy goods or services from a seller over the Internet using a web browser or 
+                    a mobile app.</p>
+                    </div>
+                    
+                  
                 </div>
-                <div class="location">
-                    <i class="fas fa-phone"></i>
-                    <p>+44 908765548</p>
+
+                <!-- CONTACT DETAIL -->
+                <div class="contact-detail">
+                    <h3>Contact Info</h3>
+                    <div class="location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <p>CleckHudderFax, UK</p>
+                    </div>
+                    <div class="location">
+                        <i class="fas fa-phone"></i>
+                        <p>+44 908765548</p>
+                    </div>
+                    <div class="media">
+                        <span class="social">
+                            <a href="#" class="fab fa-facebook"></a>
+                        </span>
+                        <span class="social">
+                            <a href="#" class="fab fa-twitter"></a>
+                        </span>
+                        <span class="social">
+                            <a href="#" class="fab fa-instagram"></a>
+                        </span>
+                    </div>
                 </div>
-                <div class="media">
-                    <span class="social">
-                        <a href="#" class="fab fa-facebook"></a>                       
-                    </span>
-                    <span class="social">
-                        <a href="#" class="fab fa-twitter"></a>                       
-                    </span>
-                    <span class="social">
-                        <a href="#" class="fab fa-instagram"></a>                       
-                    </span>
+                <div class="link">
+                    <div class="linkhead">
+                         <h3>Quick links</h3>
+                    </div>
+                     <div class="linkclick">
+                       <ul>
+                        <li><a href="index.php">Home</a></li>
+                        <li><a href="shop.php">Shop</a></li>
+                        <li><a href="customerloginform.php">Login</a></li>
+                    </ul>   
+                     </div>
+                   
                 </div>
-            </div>    
-            <div class="link">
-                <h3>Quick links</h3>
-                <ul>
-                    <li><a href="home">Home</a></li>
-                    <li><a href="home">Shop</a></li>
-                    <li><a href="home">Login</a></li>
-                </ul>
-            </div>
-        </div>         
+            </div>        
          <!-- COPY RIGHT -->
         <div class="copy">
             <p>All Rights Reserved</p>
         </div>
+    </div>
     </div>
     <script src="javascript/script.js"></script>
     <script src="javascript/hamburger.js"></script> 

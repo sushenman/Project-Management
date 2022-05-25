@@ -12,7 +12,7 @@
         
         echo $offerAmt;
 
-        $insertOffer = oci_parse($conn, 'INSERT INTO OFFER (OFFER_AMOUNT,OFFER_DESCRIPTION,FK1_TRADER_PAN_NO,FK2_PRODUCT_ID) VALUES (:oAmount,:oDescription,:traderPan,:prodId)');        
+        $insertOffer = oci_parse($conn, 'INSERT INTO OFFER (OFFER_AMOUNT,OFFER_DESCRIPTION,FK2_TRADER_PAN_NO,FK1_PRODUCT_ID) VALUES (:oAmount,:oDescription,:traderPan,:prodId)');        
         oci_bind_by_name($insertOffer, ':oAmount', $offerAmt);
         oci_bind_by_name($insertOffer, ':oDescription', $offerDsc);
         oci_bind_by_name($insertOffer, ':traderPan', $traderFk);
@@ -24,7 +24,7 @@
         oci_free_statement($insertOffer);
         oci_close($conn);
        // header('Location:selectShopForm.php');
-        header('Location:selectingShop.php');
+        header('Location:actualShop.php');
     }else {
         echo 'not submitted';
     }

@@ -9,6 +9,8 @@
     // ;
     // echo $_SESSION['panNum'];
 
+    
+
 ?>
 
 
@@ -26,12 +28,19 @@
         <h4>Add Category</h4>
         <div class="cat-forms">
             <form action="addCategory.php" method="POST">
-                <div class="inputElement">
+                <label for="category">Choose A Category</label>
+                <select name="category" id="cat">
+                    <option value="fish">Fish</option>
+                    <option value="meat">Meat</option>
+                    <option value="grocery">Grocery</option>
+                    <option value="deli">Delisacence</option>
+                </select>
+                <!-- <div class="inputElement">
                     <label for="category">Product Category</label>
                     <input type="text" name="category">
                 </div>
-                <!-- <a href="">ADD PRODUCT</a> -->
-                <input type="submit" value="ADD" name="submit">
+                <a href="">ADD PRODUCT</a> -->
+                <input type="submit" value="ADD" name="cat-submit">
             </form>
         </div>
     </div>

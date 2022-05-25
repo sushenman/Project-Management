@@ -4,7 +4,7 @@
 
     include('connection.php');
     // delete offer 
-    $deleteOffer = "DELETE FROM OFFER WHERE FK2_PRODUCT_ID = $idVal";
+    $deleteOffer = "DELETE FROM OFFER WHERE FK1_PRODUCT_ID = $idVal";
     $executeOffer = oci_parse($conn,$deleteOffer);
     oci_execute($executeOffer);  
     // delete product               

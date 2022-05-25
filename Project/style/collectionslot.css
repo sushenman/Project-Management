@@ -1,0 +1,132 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.cartbody {
+    /* border: 2px solid black; */
+    padding: 20px; 
+}
+
+.heading {
+    padding: 10px;
+}
+
+.table-heading {
+    border: 1px solid black;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.cart-items {
+    /* border: 2px solid blue; */
+    margin-left:10px;
+    margin-top:10px;
+    position: relative;
+
+}
+.proName {
+    position: absolute;
+    top:70px;
+    left: 220px;
+}
+.price {
+    position: absolute;
+    top:95px;
+    left:220px;
+}
+.remove {
+    position: absolute;
+    top:115px;
+    left:220px;
+    text-decoration: none;
+    color: red;
+}
+
+.qty {
+    position: absolute;
+    top:0px;
+    left:46.5vw;
+    top:90px;
+    border: 1px solid black;
+    padding: 5px;
+    width: 50px;
+    text-align: center;
+}
+.amount {
+    position: absolute;
+    top:90px;
+    left: 80vw;
+    text-align: center;
+}
+
+.cart-items-image {
+    width: 200px;
+    /* border: 2px solid yellowgreen; */
+}
+.cart-items-image img {
+    width: 100%;
+}
+
+.time {
+    border: 1px solid black;
+    width: 100px;
+    text-align: center;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+.total-slot{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.items {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px;
+    margin-right: 10px;
+    /* align-items: center; */
+}
+
+.items span {
+    margin-right: 10px;
+}
+
+.checkout {
+    display: flex;
+    justify-content: flex-end;
+    /* align-items: flex-end; */
+}
+
+.checkout a {
+    text-decoration: none;
+    border: 1px solid black;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 3px;
+}
+
+.proceed{
+    margin-right: 2em;
+    padding: 10px;
+}
+
+.calc-content {
+    display: flex;
+    justify-content: flex-end;
+   width: 80vw;
+}
+.heading {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.calc-items {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}

@@ -1,0 +1,12 @@
+.heading {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.tables {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+

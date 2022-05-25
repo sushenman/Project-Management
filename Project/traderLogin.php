@@ -3,10 +3,10 @@
     if(isset($_POST["submit"])){
         $user = $_POST["username"];
         $pwd = $_POST["password"];
-        echo $user;
+        // echo $user;
 
         // selecting trader from database whose username and password matches
-        $selectTrader = "SELECT *FROM trader WHERE USERNAME ='$user' AND PASSWORD ='$pwd'";
+        $selectTrader = "SELECT *FROM trader WHERE USERNAME ='$user' AND PASSWORD ='$pwd' AND STATUS = 'active'";
         $traderQuery = oci_parse($conn, $selectTrader);
         
         // execute query            
@@ -26,40 +26,12 @@
             $_SESSION['user'] = $user;
             $_SESSION['logedin'] = true;
             $_SESSION['pan'] = $pan;
-            echo $_SESSION['pan'];
-            // include('selectShopForm.php');
-            echo $user;
-        //    include('selectingShop.php'); 
-        
-            echo 'selectshop';
-           // session_start();
-            $pann = $_SESSION['pan'];
-        
-            echo $pann;
-            $selectQry = "SELECT *FROM SHOP WHERE FK1_TRADER_PAN_NO = '$pann'";
-            $selectShop = oci_parse($conn,$selectQry);
-            oci_execute($selectShop);
-            
-            $num = 0;
-            while (($row = oci_fetch_array($selectShop, OCI_BOTH)) != false) {
-                // echo $row['SHOP_NAME'].'<br>';
-            $num++;
-            //    echo $num;
-            }
-            echo 'number of data is'.$num++;
-            if($num <= 2){
-                echo 'insert more shop';
-                include('selectShopForm.php');
-            }else {
-                echo 'cannnot insert shop';
-                // include('selectShopForm.php');
-                header('Location:actualShop.php');
-            }
-           // header('Location:selectingShop.php');              
+            header('location:actualShop.php');
+
         }else {
             //session_start();
             // set error when trader count is not 1
-            $_SESSION['error'] = 'user not recognized';
+            $_SESSION['error'] = 'user not recognized and user is not verified';
             include('traderLoginForm.php');               
         }
     }else {

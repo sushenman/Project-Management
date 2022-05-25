@@ -10,7 +10,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="style/Login.css">
+    <link rel="stylesheet" href="style/Login1.css">
     <link rel="stylesheet" href="style/index.css">
     <script src="https://kit.fontawesome.com/b99e675b6e.js"></script> 
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
@@ -47,7 +47,7 @@
         <div class="heading">
             <div class="logo-container">
                 <a href="index.php">
-                    <img src="logo/cmart.png" alt="logoimage"/>                </a>
+                    <img src="logo/cmart.png" alt="logoimage"/></a>
             </div>
             <div class="form">
                 <form action="searchPage.php" method="post">
@@ -89,7 +89,7 @@
         </div>
     <div class="container-login">  
         <div class="area">
-            <h2>  Login </h2>
+            <h2>Trader  Login </h2>
             <div id="errormsg"> </div>
                 <form name="myform" id="myform" action="traderLogin.php" method="POST" onsubmit="return validation()">
                     <div class="input-field">
@@ -156,7 +156,8 @@
     <div class="copy">
         <p>All Rights Reserved</p>
     </div>   
-<script src="javascript/script.js"></script>
-<script src="javascript/hamburger.js"></script>
+    <script src="javascript/script.js"></script>
+    <script src="javascript/overlay.js"></script>
+<!-- <script src="javascript/hamburger.js"></script> -->
 </body>
 </html>

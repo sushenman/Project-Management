@@ -11,7 +11,7 @@
     <div class="dash-container">
         <h5>Do you want to make an offer??</h5>
         <a href="offerForm.php" class="btn">Yes</a>
-        <a href="#" class="btn">No</a>
+        <a href="actualShop.php" class="btn">No</a>
     </div>
 </body>
 </html>

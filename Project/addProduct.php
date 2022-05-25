@@ -1,7 +1,8 @@
 <?php 
 include('connection.php');
 session_start();
-echo $_SESSION['pan'];
+// echo 'something';
+// echo $_SESSION['pan'];
 if(isset($_POST["submit"])){
     $pName = $_POST['product-name'];
     $pDes = $_POST['description'];
@@ -11,8 +12,7 @@ if(isset($_POST["submit"])){
     $shopPan = $_POST['shopPan'];
     $cateGory = $_POST['catId'];
 
-
-    $insertProduct = oci_parse($conn, 'INSERT INTO PRODUCT (PRODUCT_NAME,PRODUCT_DESCRIPTION,PRICE,QUANTITY,IMAGE_NAME,FK1_CATEGORY_ID,FK2_PAN_NO) VALUES (:pname,:pdes,:price,:qTy,:iname,:catId,:sPan)');        
+    $insertProduct = oci_parse($conn, 'INSERT INTO PRODUCT (PRODUCT_NAME,PRODUCT_DESCRIPTION,PRICE,QUANTITY,IMAGE_NAME,FK2_CATEGORY_ID,FK1_PAN_NO) VALUES (:pname,:pdes,:price,:qTy,:iname,:catId,:sPan)');        
     oci_bind_by_name($insertProduct, ':pname', $pName);
     oci_bind_by_name($insertProduct, ':pdes', $pDes);
     oci_bind_by_name($insertProduct, ':price', $price);
